@@ -1,0 +1,32 @@
+name: DevOps Extracción Éxito
+
+on:
+  push:
+    branches: [ "main" ] 
+  schedule:
+    - cron: '0 12 * * *' # Se ejecuta automáticamente todos los días al mediodía
+
+jobs:
+  scraping-automatico:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 1. Descargar el código del repositorio
+      uses: actions/checkout@v4
+
+    - name: 2. Instalar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: 3. Instalar librerías necesarias
+      run: |
+        pip install selenium beautifulsoup4 pandas
+
+    - name: 4. Ejecutar el script
+      run: python EA2_Cabana_Marian_Ruiz_Santiago.py
+
+    - name: 5. Empaquetar y guardar el archivo CSV
+      uses: actions/upload-artifact@v4
+      with:
+        name: reporte-portatiles
+        path: portatiles_exito_doble_precio.csv
