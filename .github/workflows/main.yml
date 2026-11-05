@@ -23,7 +23,7 @@ jobs:
         pip install selenium beautifulsoup4 pandas
 
     - name: 4. Ejecutar el script
-      run: python EA2_Cabana_Marian_Ruiz_Santiago.py
+      run: python EA2_Cabana_Marian_Ruiz_Santiago_Version_Python.py
 
     - name: 5. Empaquetar y guardar el archivo CSV
       uses: actions/upload-artifact@v4
